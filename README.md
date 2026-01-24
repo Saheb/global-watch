@@ -20,7 +20,7 @@ GlobalWatch is a web application that helps you find where movies and TV shows a
 
 1.  **Clone the repository**:
     ```bash
-    git clone https://github.com/yourusername/global-watch.git
+    git clone https://github.com/saheb/global-watch.git
     cd global-watch
     ```
 
@@ -58,3 +58,6 @@ To test the caching and edge runtime locally:
 - `app/`: Next.js App Router pages and components.
 - `lib/`: Utility functions for TMDB API and Caching logic.
 - `styles/`: Global styles and Tailwind configuration.
+
+## License
+Distributed under the MIT License. See `LICENSE` for more information.
