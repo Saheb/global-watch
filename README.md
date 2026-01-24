@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# GlobalWatch
+
+GlobalWatch is a web application that helps you find where movies and TV shows are streaming globally. It allows users to search for media and check availability across different regions using the TMDB API.
+
+**Live Demo**: [https://global-watch.pages.dev](https://global-watch.pages.dev)
+
+## Features
+- **Global Availability**: Check streaming providers (Netflix, Prime, Disney+, etc.) for any country.
+- **Smart Caching**: Utilizes Cloudflare KV and in-memory caching to minimize API calls and ensure fast responses.
+- **Mobile Optimized**: Responsive design that works great on desktop and mobile devices.
+- **Edge Runtime**: Built with Next.js and deployed on Cloudflare Pages for low-latency global access.
+
+## Tech Stack
+- **Framework**: Next.js 15 (App Router)
+- **Deployment**: Cloudflare Pages (`@cloudflare/next-on-pages`)
+- **Data Source**: TMDB API
+- **Styling**: Tailwind CSS
 
 ## Getting Started
 
-First, run the development server:
+1.  **Clone the repository**:
+    ```bash
+    git clone https://github.com/yourusername/global-watch.git
+    cd global-watch
+    ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3.  **Setup Environment Variables**:
+    Create a `.env.local` file:
+    ```env
+    TMDB_API_KEY=your_tmdb_api_key_here
+    ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4.  **Run Development Server**:
+    ```bash
+    npm run dev
+    ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Cloudflare Pages Preview
+To test the caching and edge runtime locally:
 
-## Learn More
+1.  **Build the project**:
+    ```bash
+    npm run pages:build
+    ```
 
-To learn more about Next.js, take a look at the following resources:
+2.  **Start Preview Server**:
+    ```bash
+    npm run pages:preview
+    ```
+    This runs the app locally using `wrangler`, emulating the Cloudflare Pages environment with KV support.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project Structure
+- `app/`: Next.js App Router pages and components.
+- `lib/`: Utility functions for TMDB API and Caching logic.
+- `styles/`: Global styles and Tailwind configuration.

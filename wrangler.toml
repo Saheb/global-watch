@@ -1,0 +1,14 @@
+
+name = "global-watch"
+compatibility_date = "2024-09-23"
+
+# Enable Node.js compatibility (required for some libraries)
+compatibility_flags = ["nodejs_compat"]
+
+# Point to the build output
+pages_build_output_dir = ".vercel/output/static"
+
+[[kv_namespaces]]
+binding = "GLOBAL_WATCH_CACHE"
+id = "d08700bf67e649f69f5bb204c7bd35a7"
+preview_id = "d08700bf67e649f69f5bb204c7bd35a7"
