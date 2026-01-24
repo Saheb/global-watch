@@ -97,7 +97,7 @@ export const getWatchProviders = async (id: string, type: 'movie' | 'tv', forceR
     const data = await fetchWithBypass(url, headers);
 
     await setCache(cacheKey, data);
-    return { ...data, isCached: false };
+    return { ...data, isCached: false, _cachedAt: Date.now() };
 };
 
 // CACHED DETAILS

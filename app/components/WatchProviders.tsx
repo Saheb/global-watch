@@ -111,7 +111,17 @@ export default function WatchProviders({ data, onClose, title, year, director, i
 
                     {isCached && (
                         <div className="mt-4 flex items-center gap-4 text-xs font-bold uppercase tracking-widest">
-                            <span className="text-gray-400">Showing Cached Results (24h)</span>
+                            <span className="text-gray-400">
+                                {(() => {
+                                    // @ts-ignore
+                                    const cachedAt = data._cachedAt;
+                                    if (!cachedAt) return 'Cached';
+                                    const diff = Math.floor((Date.now() - cachedAt) / 1000);
+                                    if (diff < 60) return `Cached ${diff}s ago`;
+                                    if (diff < 3600) return `Cached ${Math.floor(diff / 60)}m ago`;
+                                    return `Cached ${Math.floor(diff / 3600)}h ago`;
+                                })()}
+                            </span>
                             <button
                                 onClick={onRefresh}
                                 className="text-black border-b border-black hover:bg-black hover:text-white transition-colors cursor-pointer"

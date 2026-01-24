@@ -32,14 +32,14 @@ export async function getCache(key: string): Promise<any | null> {
             const entry = await KV.get(key, { type: 'json' }) as CacheEntry | null;
             if (entry && (Date.now() - entry.updatedAt < CACHE_TTL_MS)) {
                 console.log(`[KV Cache Hit] ${key}`);
-                return entry.data;
+                return { ...entry.data, _cachedAt: entry.updatedAt };
             }
         } else {
             // Local fallback
             const entry = localCache.get(key);
             if (entry && (Date.now() - entry.updatedAt < CACHE_TTL_MS)) {
                 console.log(`[Local Cache Hit] ${key}`);
-                return entry.data;
+                return { ...entry.data, _cachedAt: entry.updatedAt };
             }
         }
     } catch (e) {

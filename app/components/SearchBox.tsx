@@ -29,7 +29,7 @@ export default function SearchBox({ onSearch, isLoading }: SearchBoxProps) {
             {isLoading ? (
                 <p className="text-sm mt-2 text-gray-500">Searching...</p>
             ) : (
-                query && <p className="text-xs mt-2 text-gray-400 uppercase tracking-wider font-medium">Press <span className="font-bold text-gray-600">Enter</span> to search</p>
+                query && <p className="text-xs md:text-sm mt-3 text-gray-500 uppercase tracking-wider font-medium">Press <span className="font-bold text-black border-b border-black pb-0.5">Enter</span> to search</p>
             )}
         </div>
     );
