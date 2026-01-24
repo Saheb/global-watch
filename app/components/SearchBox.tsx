@@ -26,7 +26,11 @@ export default function SearchBox({ onSearch, isLoading }: SearchBoxProps) {
                 onKeyDown={handleKeyDown}
                 disabled={isLoading}
             />
-            {isLoading && <p className="text-sm mt-2 text-gray-500">Searching...</p>}
+            {isLoading ? (
+                <p className="text-sm mt-2 text-gray-500">Searching...</p>
+            ) : (
+                query && <p className="text-xs mt-2 text-gray-400 uppercase tracking-wider font-medium">Press <span className="font-bold text-gray-600">Enter</span> to search</p>
+            )}
         </div>
     );
 }
