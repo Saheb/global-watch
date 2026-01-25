@@ -18,6 +18,12 @@ export default function Home() {
   const [results, setResults] = useState<MediaItem[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [recentSearches, setRecentSearches] = useState<string[]>([]);
+  const [filterType, setFilterType] = useState<'all' | 'movie' | 'tv'>('all');
+
+  const filteredResults = results.filter(item => {
+    if (filterType === 'all') return true;
+    return item.media_type === filterType;
+  });
 
   // Load recent searches on mount
   useEffect(() => {
@@ -31,6 +37,7 @@ export default function Home() {
     if (!query.trim()) return;
 
     setIsLoading(true);
+    setFilterType('all');
 
     // Update Recent Searches (Unique, limit 5)
     setRecentSearches(prev => {
@@ -62,6 +69,23 @@ export default function Home() {
 
       <SearchBox onSearch={handleSearch} isLoading={isLoading} />
 
+      {results.length > 0 && (
+        <div className="flex gap-4 mb-6 justify-center">
+          {(['all', 'movie', 'tv'] as const).map((type) => (
+            <button
+              key={type}
+              onClick={() => setFilterType(type)}
+              className={`px-4 py-2 rounded-full text-sm font-bold uppercase tracking-wider transition-colors ${filterType === type
+                ? 'bg-black text-white'
+                : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+                }`}
+            >
+              {type === 'all' ? 'All' : type === 'movie' ? 'Movies' : 'TV Shows'}
+            </button>
+          ))}
+        </div>
+      )}
+
       {recentSearches.length > 0 && results.length === 0 && !isLoading && (
         <div className="mt-8">
           <h2 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">Recent Searches</h2>
@@ -80,7 +104,7 @@ export default function Home() {
       )}
 
       <div className="mt-12">
-        <SearchResults results={results} />
+        <SearchResults results={filteredResults} />
       </div>
     </main>
   );
