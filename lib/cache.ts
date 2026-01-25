@@ -6,7 +6,7 @@ export interface CacheEntry {
     updatedAt: number;
 }
 
-const CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 24 hours
+const CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
 
 // In-memory fallback for local development (npm run dev)
 const localCache = new Map<string, CacheEntry>();
