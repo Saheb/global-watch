@@ -54,6 +54,21 @@ To test the caching and edge runtime locally:
     ```
     This runs the app locally using `wrangler`, emulating the Cloudflare Pages environment with KV support.
 
+## Deployment
+
+To deploy the application to Cloudflare Pages:
+
+1.  **Build the project**:
+    ```bash
+    npm run pages:build
+    ```
+
+2.  **Deploy to Cloudflare**:
+    ```bash
+    npm run pages:deploy
+    ```
+    This will deploy the contents of `.vercel/output/static` to your Cloudflare Pages project.
+
 ## Project Structure
 - `app/`: Next.js App Router pages and components.
 - `lib/`: Utility functions for TMDB API and Caching logic.
