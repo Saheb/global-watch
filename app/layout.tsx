@@ -37,7 +37,7 @@ export default function RootLayout({
               <span className="text-xs font-bold uppercase tracking-widest text-gray-500">Powered by</span>
               {/* Using a simple text for TMDB if SVG external link issues arise, but standard TMDB attribution usually requires logo. 
                          I'll use their official short logo URL. */}
-              <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" alt="TMDB" className="h-3 w-auto" />
+              <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" alt="TMDB" className="h-4 w-auto" />
             </div>
 
             <a
