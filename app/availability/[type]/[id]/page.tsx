@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import AvailabilityContent from './AvailabilityContent';
 import { getWatchProviders, getDetails } from '@/lib/tmdb';
+import { headers } from 'next/headers';
 
 export const dynamic = 'force-dynamic';
 export const runtime = 'edge';
@@ -24,6 +25,10 @@ export default async function AvailabilityPage({ params, searchParams }: PagePro
         return <div>Invalid media type</div>;
     }
 
+    // Get User Country from Headers (Cloudflare or Vercel)
+    const headersList = await headers();
+    const country = headersList.get('cf-ipcountry') || headersList.get('x-vercel-ip-country') || undefined;
+
     // Fetch on the server
     const forceRefresh = refresh === 'true';
     const [providersData, detailsData] = await Promise.all([
@@ -44,6 +49,7 @@ export default async function AvailabilityPage({ params, searchParams }: PagePro
                 title={title}
                 year={year}
                 director={director}
+                userCountry={country}
             />
         </Suspense>
     );

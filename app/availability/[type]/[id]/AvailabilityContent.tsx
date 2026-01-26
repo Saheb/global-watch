@@ -11,9 +11,10 @@ interface AvailabilityContentProps {
     title: string;
     year?: string;
     director?: string;
+    userCountry?: string;
 }
 
-export default function AvailabilityContent({ data, id, type, title, year, director }: AvailabilityContentProps) {
+export default function AvailabilityContent({ data, id, type, title, year, director, userCountry }: AvailabilityContentProps) {
     const router = useRouter();
     const searchParams = useSearchParams();
 
@@ -38,6 +39,7 @@ export default function AvailabilityContent({ data, id, type, title, year, direc
                     isPage={true}
                     isCached={data.isCached}
                     onRefresh={handleRefresh}
+                    userCountry={userCountry}
                 />
             </div>
         </div>

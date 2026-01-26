@@ -37,7 +37,7 @@ const CONTINENT_MAP: Record<string, string> = {
     'RU': 'Europe', 'TR': 'Europe' // Transcontinental
 };
 
-export default function WatchProviders({ data, onClose, title, year, director, isPage = false, userCountry = 'IN', isCached = false, onRefresh }: WatchProvidersProps) {
+export default function WatchProviders({ data, onClose, title, year, director, isPage = false, userCountry, isCached = false, onRefresh }: WatchProvidersProps) {
     const [selectedContinent, setSelectedContinent] = useState<string>('All');
 
     const allRows = useMemo(() => {
