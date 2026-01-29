@@ -11,7 +11,7 @@ const CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
 // In-memory fallback for local development (npm run dev)
 const localCache = new Map<string, CacheEntry>();
 
-function getKV() {
+export const getKV = () => {
     try {
         const ctx = getRequestContext();
         if (ctx?.env && (ctx.env as any).GLOBAL_WATCH_CACHE) {

@@ -3,6 +3,7 @@
 import { useState, useCallback, useEffect } from 'react';
 import SearchBox from './components/SearchBox';
 import SearchResults from './components/SearchResults';
+import RecentActivity from './components/RecentActivity';
 
 interface MediaItem {
   id: number;
@@ -106,6 +107,8 @@ export default function Home() {
       <div className="mt-12">
         <SearchResults results={filteredResults} />
       </div>
+
+      <RecentActivity />
     </main>
   );
 }

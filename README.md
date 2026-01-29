@@ -58,6 +58,13 @@ To test the caching and edge runtime locally:
 
 To deploy the application to Cloudflare Pages:
 
+```bash
+# One-liner (build + deploy)
+npm run pages:build && npm run pages:deploy
+```
+
+Or step-by-step:
+
 1.  **Build the project**:
     ```bash
     npm run pages:build
@@ -67,7 +74,8 @@ To deploy the application to Cloudflare Pages:
     ```bash
     npm run pages:deploy
     ```
-    This will deploy the contents of `.vercel/output/static` to your Cloudflare Pages project.
+
+This will deploy the contents of `.vercel/output/static` to your Cloudflare Pages project.
 
 ## Project Structure
 - `app/`: Next.js App Router pages and components.
